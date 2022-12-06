@@ -24,28 +24,29 @@ function loadEventListners() {
 function getTasks(){
     let tasks;
     if (localStorage.getItem('tasks') === null) {
-        task = [];
+        tasks = [];
     } else {
         tasks = JSON.parse(localStorage.getItem('tasks'));
     }
-    tasks.forEach(function (task){
+
+    tasks.forEach(function(task) {
         // create li element
-    const li = document.createElement('li');
-    // Add class
-    li.className = 'collection-item';
-    // Create text node and append to li
-    li.appendChild(document.createTextNode(tasks));
-    // create new link element
-    const link = document.createElement('a');
-    // Add class
-    link.className = 'delete-item secondary-content';
-    // Add icon html
-    link.innerHTML = '<i class="fa fa-remove"></i>';
-    // Append the link to li
-    li.appendChild(link);
-    // Append is to ul
-    taskList.appendChild(li);
-    })
+        const li = document.createElement('li');
+        // Add class
+        li.className = 'collection-item';
+        // Create text node and append to li
+        li.appendChild(document.createTextNode(task));
+        // create new link element
+        const link = document.createElement('a');
+        // Add class
+        link.className = 'delete-item secondary-content';
+        // Add icon html
+        link.innerHTML = '<i class="fa fa-remove"></i>';
+        // Append the link to li
+        li.appendChild(link);
+        // Append is to ul
+        taskList.appendChild(li);
+    });
 }
 // Add Task
 function addTask(e) {
@@ -93,11 +94,12 @@ function storeTaskInLocalStorage(task) {
 // Remove task
 
 function reomveTask(e) {
-    if (e.target.partentElement.classList.contains('delete-item')) {
+    if (e.target.partentElement.classList.contains('delete-item'))
+    {
         if(confirm('Are You sure?')){
             e.target.partentElement.partentElement.remove();
             // reomove from Ls
-            reomveTaskFromLocalStorage(e.target.partentElement.partentElement);
+            reomoveTaskFromLocalStorage(e.target.partentElement.partentElement);
     }
   }
 }
